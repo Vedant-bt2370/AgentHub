@@ -1,6 +1,15 @@
-def register_user(db, user_data):
-    pass
+from models.user import User
+from core.security import hash_password
 
+def register_user(db, email, password):
 
-def login_user(db, credentials):
-    pass
+    user = User(
+        email=email,
+        password_hash=hash_password(password)
+    )
+
+    db.add(user)
+    db.commit()
+    db.refresh(user)
+
+    return user

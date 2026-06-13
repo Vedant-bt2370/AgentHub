@@ -1,7 +1,6 @@
 from sqlalchemy import Column, Integer, String
 from database.postgres import Base
 
-
 class Chat(Base):
     __tablename__ = "chats"
 
